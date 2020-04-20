@@ -30,6 +30,14 @@
     "sass": "^1.26.3"
   },
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "dist": "^0.1.2",
+    "orbit-controls-es6": "^2.0.1",
+    "parcel-plugin-static-files-copy": "^2.3.1",
+    "postprocessing": "^6.13.3",
+    "three": "^0.115.0",
+    "three-gltf-loader": "^1.111.0",
+    "three-orbit-controls": "^82.1.0",
+    "tone": "^13.8.25"
   }
 }
