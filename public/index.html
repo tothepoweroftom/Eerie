@@ -2,8 +2,11 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Sassy Lift</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	<title>Eeerie - Imagination of Things</title>
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
 	<style>
 		html,
 		body {
@@ -14,12 +17,127 @@
 		#c {
 			width: 100%;
 			height: 100%;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			z-index: -1;
 			display: block;
+		}
+
+		body {
+			font-family: 'Work Sans', sans-serif;
+			font-weight: normal;
+			font-style: normal;
+			color: #EBF0F4;
+			background-color: #12173D;
+			line-height: .6em;
+			font-size: 1em;
+		}
+
+		header {
+			padding: .5em 2em;
+			z-index: 12;
+
+		}
+
+		h1 {
+			font-size: calc(2em + 1vw);
+		}
+
+		h2 {
+			font-size: calc(.4em + 1vw);
+			padding-bottom: .4em;
+			line-height: 1.2em;
+		}
+
+		p {
+			font-size: calc(.3em + .8vw);
+			color: #ABABAF;
+		}
+
+		a {
+			text-decoration: none;
+			color: #D2D1CD;
+			cursor: pointer;
+			z-index: 13;
+		}
+
+		a:hover {
+			cursor: pointer;
+		}
+
+		@media only screen and (max-width: 768px) {
+			body {
+				font-size: 1.8em;
+				line-height: .3em;
+			}
+
+			p,
+			h2 {
+				font-size: .6em;
+			}
+
+			header {
+				padding: 0 1em;
+				margin-top: 35px;
+				z-index: 12;
+			}
+		}
+
+		.material-icons {
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			font-size: 30px;
+			/* Preferred icon size */
+			display: inline-block;
+			line-height: 1;
+			text-transform: none;
+			letter-spacing: normal;
+			word-wrap: normal;
+			white-space: nowrap;
+			direction: ltr;
+
+			/* Support for all WebKit browsers. */
+			-webkit-font-smoothing: antialiased;
+			/* Support for Safari and Chrome. */
+			text-rendering: optimizeLegibility;
+
+			/* Support for Firefox. */
+			-moz-osx-font-smoothing: grayscale;
+
+			/* Support for IE. */
+			font-feature-settings: 'liga';
+		}
+
+		button {
+			background: transparent;
+			color: white;
+			border: 0px;
+			opacity: 0.3;
+			transition: 0.31s;
+			outline: none;
+		}
+
+		button:hover {
+			opacity: 1;
+		}
+		#mp3 {
+			opacity: 1;
 		}
 	</style>
 </head>
 
 <body>
+	<header>
+		<h1>Eeerie</h1>
+		<h2> A soothing experience in weird times</h2>
+		<p>Inniu by <a href="https://distrokid.com/hyperfollow/lhommemoyen/preoccupy" target="blank">L'Homme Moyen &#x2197;</a></p>
+		<p>Project by <a href="https://imaginationofthings.comy" target="blank">Imagination of Things &#x2197;</a></p>
+		<button id="mp3" onclick="startMp3()"><i class="material-icons">volume_up</i></button> <button
+			id="mic" onclick="muteMp3()"><i class="material-icons">mic</i></button>
+
+	</header>
 	<noscript>
 		<strong>We're sorry but this application doesn't work properly without JavaScript enabled. Please enable it to
 			continue.
@@ -34,6 +152,24 @@
 	</div>
 
 	<script src="../src/main.js"></script>
+	<script>
+		function muteMp3() {
+			var event = new Event('mute');
+			// Dispatch the event.
+			window.dispatchEvent(event);
+			document.querySelector('#mp3').style.opacity = 0.3
+			document.querySelector('#mic').style.opacity = 1
+
+		}
+
+		function startMp3() {
+			var event = new Event('startMP3');
+			// Dispatch the event.
+			window.dispatchEvent(event);
+			document.querySelector('#mp3').style.opacity = 1
+			document.querySelector('#mic').style.opacity = 0.3
+		}
+	</script>
 </body>
 
 </html>
