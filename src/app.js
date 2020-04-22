@@ -65,8 +65,8 @@ export function main(assets) {
 
         var constraints = {
             video: {
-                width: 1280,
-                height: 720,
+                width: 1024,
+                height: 512,
                 facingMode: 'user'
             }
         };
@@ -161,7 +161,7 @@ export function main(assets) {
     navigator.userAgent.indexOf('CriOS') == -1 &&
     navigator.userAgent.indexOf('FxiOS') == -1;
 
-    if(!isSafari){
+    // if(!isSafari){
     root.traverse((node) => {
         if (node.isMesh) {
 
@@ -172,9 +172,11 @@ export function main(assets) {
                 // node.material.map.offset.x = 0.05
                 node.material.map.repeat.x = 2
                 node.material.map.rotation = 0.05
-                
-
+                node.material.map.wrapS = THREE.ClampToEdgeWrapping;                
+                node.material.map.wrapT = THREE.ClampToEdgeWrapping;
                 // node
+
+                console.log(node.material)
                 
 
             } else {
@@ -184,7 +186,7 @@ export function main(assets) {
       
         }
     })
-}
+// }
 
     // root
     scene.add(root);

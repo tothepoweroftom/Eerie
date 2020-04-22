@@ -5,4 +5,4 @@ import "./css/mqueries.css"
 
 Assets.load()
 	.then(App.main)
-	.catch(console.error);
+	.catch(console.error); 
