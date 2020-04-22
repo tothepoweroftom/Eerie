@@ -46,7 +46,6 @@ export function main(assets) {
     // controls.target.set(0, 5, 0);
     // controls.update();
 
-    window.addEventListener('mouth', shoot, false);
 
 
 
@@ -167,7 +166,28 @@ export function main(assets) {
     heartbeat.play();
     // animationMixer.timeScale = 0.5
   
- 
+    // root.traverse((node) => {
+    //     if (node.isMesh) {
+
+    //         // if (webcamTexture) {
+    //         //     node.material.map = webcamTexture;
+    //         //     //   node.material.map.scale.x = 0.5
+    //         //     // node.material.map.center.x = 2
+    //         //     // node.material.map.offset.x = 0.05
+    //         //     node.material.map.repeat.x = 2
+    //         //     node.material.map.rotation = 0.05
+                
+
+    //         //     // node
+                
+
+    //         // } else {
+    //         // //   node.material.map = null
+
+    //         // }
+      
+    //     }
+    // })
 
     // root
     scene.add(root);
