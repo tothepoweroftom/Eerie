@@ -2,18 +2,7 @@ import * as faceFilter from './FaceFilter/jeelizFaceFilterES6.js'
 import * as neuralNetworkModel from './FaceFilter/NNC.json'
 import * as neuralNetworkModelLite from './FaceFilter/NNClight.json'
 
-const STABI = { //stabilizer
-    sensibility: 0.003,
-    am: 0.8, //0.9,
-    pow: 1.8,
 
-    t: Date.now(),
-    speed: [0, 0],
-    speedAm: [0, 0],
-    rxy: [0, 0],
-    xy: [window.innerWidth / 2, window.innerHeight / 2],
-    mouseClickEnabled: true
-};
 export default class FaceTracker {
     constructor(threeRender) {
 

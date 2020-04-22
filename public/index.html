@@ -5,8 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 	<title>Eeerie - Imagination of Things</title>
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
 	<style>
 		html,
 		body {
@@ -29,7 +33,7 @@
 			font-weight: normal;
 			font-style: normal;
 			color: #EBF0F4;
-			background-color: #12173D;
+			background-color: #000;
 			line-height: .6em;
 			font-size: 1em;
 		}
@@ -122,6 +126,7 @@
 		button:hover {
 			opacity: 1;
 		}
+
 		#mp3 {
 			opacity: 1;
 		}
@@ -129,22 +134,39 @@
 </head>
 
 <body>
-	<header>
+
+	<!-- PAGE LOADER -->
+
+	<div id="page-loader" class="pulsing">
+		<div class="loader-name">Loading...<br/></div>
+		<div class="loader-circle">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+				y="0px" viewBox="0 0 253.4 253.4" style="enable-background:new 0 0 253.4 253.4;" xml:space="preserve">
+				<circle cx="126.7" cy="126.7" r="124.2" />
+			</svg>
+		</div>
+	</div>
+
+	<!-- PAGE LOADER -->
+
+
+
+	<!-- <header>
 		<h1>Eeerie</h1>
 		<h2> A soothing experience in weird times</h2>
-		<p>Inniu by <a href="https://distrokid.com/hyperfollow/lhommemoyen/preoccupy" target="blank">L'Homme Moyen &#x2197;</a></p>
+		<p>Inniu by <a href="https://distrokid.com/hyperfollow/lhommemoyen/preoccupy" target="blank">L'Homme Moyen
+				&#x2197;</a></p>
 		<p>Project by <a href="https://imaginationofthings.comy" target="blank">Imagination of Things &#x2197;</a></p>
-		<button id="mp3" onclick="startMp3()"><i class="material-icons">volume_up</i></button> <button
-			id="mic" onclick="muteMp3()"><i class="material-icons">mic</i></button>
+	
 
-	</header>
+	</header> -->
 	<noscript>
 		<strong>We're sorry but this application doesn't work properly without JavaScript enabled. Please enable it to
 			continue.
 		</strong>
 	</noscript>
 	<div id="container">
-		<video id="video" autoplay style="display:none;transform: rotate((-180));"></video>
+		<video id="video" crossorigin="anonymous" x-webkit-airplay="allow" preload="auto" webkit-playsinline="true" autoplay style="display:none;transform: rotate((-180));"></video>
 
 		<canvas id="c"></canvas>
 		<canvas width="100%" height="100%" id='jeeFaceFilterCanvas'></canvas>
@@ -152,24 +174,7 @@
 	</div>
 
 	<script src="../src/main.js"></script>
-	<script>
-		function muteMp3() {
-			var event = new Event('mute');
-			// Dispatch the event.
-			window.dispatchEvent(event);
-			document.querySelector('#mp3').style.opacity = 0.3
-			document.querySelector('#mic').style.opacity = 1
 
-		}
-
-		function startMp3() {
-			var event = new Event('startMP3');
-			// Dispatch the event.
-			window.dispatchEvent(event);
-			document.querySelector('#mp3').style.opacity = 1
-			document.querySelector('#mic').style.opacity = 0.3
-		}
-	</script>
 </body>
 
 </html>

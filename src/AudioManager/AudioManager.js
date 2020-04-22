@@ -23,22 +23,20 @@ export default class AudioManager {
         var pingPong = new Tone.PingPongDelay("2n", 0.52).connect(this.tremolo)
         var filter = new Tone.Filter(800, "lowpass").connect(pingPong);
 
-        this.mic = new Tone.UserMedia().connect(filter)
+        this.mic = new Tone.UserMedia()
         this.micState = true;
+        this.playerState = true;
+
         this.count = 0;
 
    
 
         window.addEventListener("mute", (state) => {
-
-                this.setSource(false)
+                 this.playerState = !this.playerState
+               this.player.mute = this.playerState
             
         }, false);
-        window.addEventListener("startMP3", (state) => {
-
-            this.setSource(true)
-        
-    }, false);
+    
         // var reverb = new Tone.JCReverb(0.4)
         // var pitchShift = new Tone.PitchShift(-12)
         // pitchShift.windowSize = 0.01
@@ -93,26 +91,13 @@ export default class AudioManager {
         this.mic.open().then(() => {
             //promise resolves when input is available
             this.mic.fan(this.bass, this.mid, this.treble, this.follower);
-            this.player.connect(this.follower)
+            // this.player.connect(this.follower)
             // this.bass.connect(this.bassMeter);
             // this.mid.connect(this.midMeter);
             // this.treble.connect(this.trebleMeter);
             this.follower.connect(this.midMeter)
             this.inited = true;
-            var loop = new Tone.Loop((time)=>{
-                //triggered every eighth note. 
-                this.count += 1
-                if(this.mp3 === false && this.count%5===0) {
-                    this.micState = !this.micState
-                    this.mic.mute = this.micState
-                    // this.count = 0
-                    console.log(time);
-
-                }
-            
-            }, "2n").start(0);
-            Tone.Transport.start();
-            Tone.Transport.bpm.value = 60;
+   
             // this.level = this.meter.getLevel();
         });
 
