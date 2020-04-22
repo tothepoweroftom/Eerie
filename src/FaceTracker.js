@@ -53,7 +53,7 @@ export default class FaceTracker {
 
 
         if (this.threeRender) {
-            this.threeRender(mv );
+            this.threeRender(mv, mouth);
 
             // this.threeRender(mv)
 

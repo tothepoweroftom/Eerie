@@ -3,14 +3,7 @@ import OrbitControls from 'orbit-controls-es6';
 import GLTFLoader from 'three-gltf-loader';
 import FaceTracker from './FaceTracker'
 import AudioManager from './AudioManager/AudioManager'
-import {
-    EffectComposer,
-    EffectPass,
-    NoiseEffect,
-    RenderPass,
-    SMAAEffect,
-    VignetteEffect
-} from "postprocessing";
+
 
 import {
     TweenLite
@@ -31,10 +24,7 @@ export function main(assets) {
     // renderer.shadowMap.needsUpdate = true;
     // renderer.shadowMap.enabled = true;
 
-    // POST PROCESSING
-    const composer = new EffectComposer(renderer, {
-        frameBufferType: THREE.HalfFloatType
-    });
+   
     const fov = 45;
     const aspect = 2; // the canvas default
     const near = 0.1;
@@ -42,7 +32,6 @@ export function main(assets) {
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.set(0, 10, 20);
     let video;
-    let mv;
     let webcamTexture;
     // const controls = new OrbitControls(camera, canvas);
     // controls.target.set(0, 5, 0);
@@ -195,7 +184,7 @@ export function main(assets) {
       
         }
     })
-    }
+}
 
     // root
     scene.add(root);
@@ -283,33 +272,7 @@ export function main(assets) {
         // })
     }
 
-    // Passes.
-    const smaaEffect = new SMAAEffect(
-        assets.get("smaa-search"),
-        assets.get("smaa-area")
-    );
 
-
-
-
-    const noiseEffect = new NoiseEffect({
-        premultiply: true
-    });
-    const vignetteEffect = new VignetteEffect();
-
-    const renderPass = new RenderPass(scene, camera);
-    const effectPass = new EffectPass(
-        camera,
-        // noiseEffect,
-        // vignetteEffect,
-        // smaaEffect,
-
-    );
-
-    // noiseEffect.blendMode.opacity.value = 0.5;
-
-    composer.addPass(renderPass);
-    composer.addPass(effectPass);
 
 
 
@@ -334,20 +297,8 @@ export function main(assets) {
         return 1 - (1 - x) * (1 - x);
     }
 
-    function update(_mv)
-    {
-        mv = _mv
-    }
 
-    function animate() {
-
-        requestAnimationFrame( animate );
-
-        render();
-
-    }
-
-    function render() {
+    function render(mv, mouth) {
         let audioMult = 0;
         let delta = clock.getDelta()
         if (mv) {
@@ -428,8 +379,6 @@ export function main(assets) {
 
 
     }
-
-    animate()
 }
 
 

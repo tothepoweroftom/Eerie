@@ -37,13 +37,7 @@ export default class AudioManager {
             
         }, false);
     
-        // var reverb = new Tone.JCReverb(0.4)
-        // var pitchShift = new Tone.PitchShift(-12)
-        // pitchShift.windowSize = 0.01
-        // var limiter = new Tone.Limiter(-6).toMaster()
-        // let filter = new Tone.Filter(300, "lowpass");
-        // // var delay = new Tone.FeedbackDelay(0.5);
-        // this.mic.chain( this.autopan, this.tremolo, filter, limiter);
+       
         this.bassMeter = new Tone.Meter();
         this.midMeter = new Tone.Meter();
         this.trebleMeter = new Tone.Meter();
@@ -51,7 +45,7 @@ export default class AudioManager {
         this.follower = new Tone.Follower(0.94);
         this.state = 0;
         this.mp3 = true
-        this.setSource(this.mp3)
+        
         // Filters 
         this.bass = new Tone.Filter({
             type: "lowpass",
@@ -75,17 +69,7 @@ export default class AudioManager {
         });
     }
 
-    setSource(bool) {
-        console.log(bool)
-        this.mp3 = bool
-        if (bool) {
-            this.mic.mute = true;
-            this.player.mute = false;
-        } else {
-            this.mic.mute = false;
-            this.player.mute = true;
-        }
-    }
+ 
 
     initAudioListener() {
         this.mic.open().then(() => {
