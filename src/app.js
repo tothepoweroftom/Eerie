@@ -42,6 +42,8 @@ export function main(assets) {
     const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     camera.position.set(0, 10, 20);
     let video;
+    let mv;
+    let webcamTexture;
     // const controls = new OrbitControls(camera, canvas);
     // controls.target.set(0, 5, 0);
     // controls.update();
@@ -165,29 +167,35 @@ export function main(assets) {
     let heartbeat = animationMixer.clipAction(heart.animations[0])
     heartbeat.play();
     // animationMixer.timeScale = 0.5
-  
-    // root.traverse((node) => {
-    //     if (node.isMesh) {
+    var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+    navigator.userAgent &&
+    navigator.userAgent.indexOf('CriOS') == -1 &&
+    navigator.userAgent.indexOf('FxiOS') == -1;
 
-    //         // if (webcamTexture) {
-    //         //     node.material.map = webcamTexture;
-    //         //     //   node.material.map.scale.x = 0.5
-    //         //     // node.material.map.center.x = 2
-    //         //     // node.material.map.offset.x = 0.05
-    //         //     node.material.map.repeat.x = 2
-    //         //     node.material.map.rotation = 0.05
+    if(!isSafari){
+    root.traverse((node) => {
+        if (node.isMesh) {
+
+            if (webcamTexture) {
+                node.material.map = webcamTexture;
+                //   node.material.map.scale.x = 0.5
+                // node.material.map.center.x = 2
+                // node.material.map.offset.x = 0.05
+                node.material.map.repeat.x = 2
+                node.material.map.rotation = 0.05
                 
 
-    //         //     // node
+                // node
                 
 
-    //         // } else {
-    //         // //   node.material.map = null
+            } else {
+            //   node.material.map = null
 
-    //         // }
+            }
       
-    //     }
-    // })
+        }
+    })
+    }
 
     // root
     scene.add(root);
@@ -326,8 +334,20 @@ export function main(assets) {
         return 1 - (1 - x) * (1 - x);
     }
 
+    function update(_mv)
+    {
+        mv = _mv
+    }
 
-    function render(mv, mouth) {
+    function animate() {
+
+        requestAnimationFrame( animate );
+
+        render();
+
+    }
+
+    function render() {
         let audioMult = 0;
         let delta = clock.getDelta()
         if (mv) {
@@ -408,21 +428,10 @@ export function main(assets) {
 
 
     }
+
+    animate()
 }
 
 
 
 
-// main();
-
-function getVideo() {
-
-    return new Promise((resolve, reject) => {
-
-                // return new Promis
-                let video, texture;
-
-
-
-
-            }

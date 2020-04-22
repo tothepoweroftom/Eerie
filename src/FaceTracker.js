@@ -1,6 +1,5 @@
 import * as faceFilter from './FaceFilter/jeelizFaceFilterES6.js'
 import * as neuralNetworkModel from './FaceFilter/NNC.json'
-import * as neuralNetworkModelLite from './FaceFilter/NNClight.json'
 
 
 export default class FaceTracker {
@@ -54,7 +53,7 @@ export default class FaceTracker {
 
 
         if (this.threeRender) {
-            this.threeRender(mv, mouth);
+            this.threeRender(mv );
 
             // this.threeRender(mv)
 
