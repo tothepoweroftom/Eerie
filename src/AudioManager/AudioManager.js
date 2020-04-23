@@ -3,6 +3,8 @@ import {
     Math
 } from 'three'
 
+import $ from 'jquery'
+
 function lerp(v0, v1, t) {
     return v0 * (1 - t) + v1 * t
 }
@@ -29,14 +31,32 @@ export default class AudioManager {
 
         this.count = 0;
 
-   
+        
+
+        $('#mute-button').click(()=>{
+
+            if(!this.mp3) {
+                $('#mute-icon').html("volume_up")
+                this.player.mute = false
+                Tone.context.resume()
+
+        
+            } else {
+                $('#mute-icon').html("volume_off")
+                this.player.mute = true
+
+        
+            }
+        
+            this.mp3 = !this.mp3
+        })
 
         window.addEventListener("mute", (state) => {
                  this.playerState = !this.playerState
                this.player.mute = this.playerState
             
         }, false);
-    
+
        
         this.bassMeter = new Tone.Meter();
         this.midMeter = new Tone.Meter();

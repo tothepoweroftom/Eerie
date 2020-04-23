@@ -25,7 +25,7 @@ export function load() {
             loadingManager.onError = reject;
             loadingManager.onLoad = () => {
                 document.getElementById("page-loader").style.opacity = 0
-                document.getElementById("page-loader").style.display = "hidden"
+                document.getElementById("page-loader").style.display = "none"
                 resolve(assets) 
             
             }

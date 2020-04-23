@@ -10,7 +10,27 @@ import {
 } from 'gsap'
 
 
+function iOS() {
 
+    var iDevices = [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+    ];
+
+    if (!!navigator.platform) {
+        while (iDevices.length) {
+            if (navigator.platform === iDevices.pop()) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
 
 export function main(assets) {
     const canvas = document.querySelector('#c');
@@ -24,7 +44,7 @@ export function main(assets) {
     // renderer.shadowMap.needsUpdate = true;
     // renderer.shadowMap.enabled = true;
 
-   
+
     const fov = 45;
     const aspect = 2; // the canvas default
     const near = 0.1;
@@ -157,36 +177,40 @@ export function main(assets) {
     heartbeat.play();
     // animationMixer.timeScale = 0.5
     var isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
-    navigator.userAgent &&
-    navigator.userAgent.indexOf('CriOS') == -1 &&
-    navigator.userAgent.indexOf('FxiOS') == -1;
+        navigator.userAgent &&
+        navigator.userAgent.indexOf('CriOS') == -1 &&
+        navigator.userAgent.indexOf('FxiOS') == -1;
 
     // if(!isSafari){
-    root.traverse((node) => {
-        if (node.isMesh) {
+    if (!iOS()) {
+        root.traverse((node) => {
+            if (node.isMesh) {
 
-            if (webcamTexture) {
-                node.material.map = webcamTexture;
-                //   node.material.map.scale.x = 0.5
-                // node.material.map.center.x = 2
-                // node.material.map.offset.x = 0.05
-                node.material.map.repeat.x = 2
-                node.material.map.rotation = 0.05
-                node.material.map.wrapS = THREE.ClampToEdgeWrapping;                
-                node.material.map.wrapT = THREE.ClampToEdgeWrapping;
-                // node
+                if (webcamTexture) {
+                    node.material.map = webcamTexture;
+                    //   node.material.map.scale.x = 0.5
+                    // node.material.map.center.x = 2
+                    // node.material.map.offset.x = 0.05
+                    node.material.map.repeat.x = 1.5
+                    node.material.map.repeat.y = 1.5
 
-                console.log(node.material)
-                
+                    // node.material.map.rotation = 0.05
+                    node.material.map.wrapS = THREE.ClampToEdgeWrapping;
+                    node.material.map.wrapT = THREE.ClampToEdgeWrapping;
+                    // node
 
-            } else {
-            //   node.material.map = null
+                    console.log(node.material)
+
+
+                } else {
+                    //   node.material.map = null
+
+                }
 
             }
-      
-        }
-    })
-// }
+        })
+    }
+    // }
 
     // root
     scene.add(root);
@@ -220,7 +244,7 @@ export function main(assets) {
     // debrisAnimations.push(gltf.animations[0])
 
 
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 50; i++) {
         let particle = debris.clone()
         particle.scale.setScalar(Math.random() * 1.25 + 2.0)
         let theta = Math.random() * 2 * Math.PI
@@ -239,7 +263,7 @@ export function main(assets) {
 
     // debrisAnimations.push(gltf.animations[0])
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 20; i++) {
         let particle = debris2.clone()
         particle.scale.setScalar(Math.random() * 0.25 + 2.0)
         let theta = Math.random() * Math.PI
@@ -382,7 +406,3 @@ export function main(assets) {
 
     }
 }
-
-
-
-

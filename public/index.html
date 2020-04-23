@@ -70,6 +70,11 @@
 			cursor: pointer;
 		}
 
+		.arrow {
+			font-size: calc(.3em + .8vw) !important;
+
+		}
+
 		@media only screen and (max-width: 768px) {
 			body {
 				font-size: 1.8em;
@@ -81,10 +86,31 @@
 				font-size: .6em;
 			}
 
+			
 			header {
 				padding: 0 1em;
 				margin-top: 35px;
 				z-index: 12;
+			}
+
+			h1 {
+				font-size: calc(1em + 1vw);
+			}
+
+			h2 {
+				font-size: calc(.6em + 1vw);
+				padding-bottom: .4em;
+				line-height: 1.2em;
+			}
+
+			p {
+				font-size: calc(.3em + .8vw);
+				color: #ABABAF;
+			}
+
+			.arrow {
+				font-size: calc(.3em + .8vw) !important;
+
 			}
 		}
 
@@ -138,7 +164,7 @@
 	<!-- PAGE LOADER -->
 
 	<div id="page-loader" class="pulsing">
-		<div class="loader-name">Loading...<br/></div>
+		<div class="loader-name">Loading...<br /></div>
 		<div class="loader-circle">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 				y="0px" viewBox="0 0 253.4 253.4" style="enable-background:new 0 0 253.4 253.4;" xml:space="preserve">
@@ -152,13 +178,31 @@
 
 
 	<header>
-		<h1>Eeerie</h1>
-		<h2> A soothing experience in weird times</h2>
-		<p>Inniu by <a href="https://distrokid.com/hyperfollow/lhommemoyen/preoccupy" target="blank">L'Homme Moyen
-				&#x2197;</a></p>
-		<p>Project by <a href="https://imaginationofthings.comy" target="blank">Imagination of Things &#x2197;</a></p>
-	
+		<button id="info-button"><span class="material-icons">
+				info
+			</span></button>
 
+		<button id="mute-button">
+			<span id="mute-icon" class="material-icons">
+				volume_up
+			</span>
+		</button>
+
+		<div id="info-content">
+
+
+			<h1>Eeerie</h1>
+			<h2> A soothing experience in weird times</h2>
+			<p>Inniu by <a href="https://distrokid.com/hyperfollow/lhommemoyen/preoccupy" target="blank">L'Homme Moyen
+				<span  class="material-icons arrow">
+					call_made
+					</span></a></p>
+			<p>Project by <a href="https://imaginationofthings.com" target="blank">Imagination of Things <span class="material-icons arrow">
+				call_made
+				</span></a>
+			</p>
+
+		</div>
 	</header>
 	<noscript>
 		<strong>We're sorry but this application doesn't work properly without JavaScript enabled. Please enable it to

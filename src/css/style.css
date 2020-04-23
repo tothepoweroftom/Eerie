@@ -4,12 +4,12 @@
 
 ------------------------------------------------*/
 #page-loader {
-	position: fixed;
+	position: absolute;
   	top: 0;
   	left: 0;
   	width: 100%;
   	height: 100%;
-  	z-index: 10;					/* big z-index for revolution slider */
+  	z-index: 1;					/* big z-index for revolution slider */
   	background: #000;
 	-webkit-transition: opacity 0.4s ease;
 	   -moz-transition: opacity 0.4s ease;
@@ -28,6 +28,7 @@
 	top: 50%;
 	color:white;
 	left: 50%;
+	font-size: calc(0.5em + 0.5vw);
 	text-align: center;
 	-webkit-transform: translate(-50%, -50%);
   	-moz-transform: translate(-50%, -50%);
@@ -103,11 +104,15 @@
 		animation-name: none;	
 	}
 
+	#info-button {
+		z-index: 100;
+	}
 
 
+	#info-content {
+		display: none;
+	}
 
-	.info-content {
-		transition: 0.5s all;
-		width: 100%;
-		opacity: 0;
+	#mute-button {
+		opacity: 1;
 	}
